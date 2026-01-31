@@ -1,4 +1,4 @@
-name: SonarCloud Frontend Analysis
+name: SonarCloud Backend Analysis
 
 on:
   push:
@@ -12,11 +12,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Build Backend
+        run: mvn clean compile
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=Ravikanth1407_devops-project-backend
+            -Dsonar.projectKey=Ravikanth1407_devops-project-frontend
             -Dsonar.organization=ravikanth14
