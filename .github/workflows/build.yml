@@ -25,9 +25,9 @@ jobs:
 
       - name: SonarCloud Scan
         run: mvn sonar:sonar \
+          -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.projectKey=Ravikanth1407_devops-project-backend \
           -Dsonar.organization=ravikanth14 \
           -Dsonar.java.binaries=target/classes \
-          -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml \
+          -Dsonar.token=${{ secrets.SONAR_TOKEN }}
