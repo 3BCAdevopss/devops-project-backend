@@ -20,14 +20,14 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Build Backend
+      - name: Build & Test
         run: mvn clean verify
 
       - name: SonarCloud Scan
-        uses: SonarSource/sonarqube-scan-action@v5
+        run: mvn sonar:sonar \
+          -Dsonar.projectKey=Ravikanth1407_devops-project-backend \
+          -Dsonar.organization=ravikanth14 \
+          -Dsonar.java.binaries=target/classes \
+          -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.projectKey=Ravikanth1407_devops-project-backend
-            -Dsonar.organization=ravikanth14
