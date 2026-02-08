@@ -1,117 +1,181 @@
-Backend Application – DevOps Project
+Devops Project – Backend
 
-This repository contains the backend application for a full-stack DevOps project.
-The backend is built using Spring Boot, containerized with Docker, analyzed using SonarCloud, automated via GitHub Actions, and designed to integrate with a frontend deployed on Vercel.
+This repository contains the backend service for my DevOps project.
+The backend is built using Java & Spring Boot, follows DevOps best practices, includes CI/CD pipelines, SonarCloud analysis, Dockerization, and is deployed on Render.
 
-##Project Overview
+🌐 Live Backend API
+👉 https://devops-project-backend-h8hb.onrender.com/api/products
 
-Backend developed using Spring Boot (Java)
+📌 Project Overview
 
-RESTful APIs for frontend communication
+Backend developed using Spring Boot
 
-Dockerized using multi-stage Dockerfile
+RESTful APIs for frontend integration
+
+Code quality analysis using SonarCloud
 
 CI/CD implemented with GitHub Actions
 
-Static code analysis with SonarCloud
+Containerized using Docker
 
-Designed for deployment on VM / EC2 / Docker platform
+Deployed on Render Cloud
 
-##Tech Stack
+Integrated with frontend deployed on Vercel
 
-Backend Framework: Spring Boot (Java)
+🛠️ Tools & Technologies Used
+
+Backend Framework: Spring Boot
+
+Language: Java 17
 
 Build Tool: Maven
 
-Containerization: Docker, Docker Compose
+API Type: RESTful APIs
 
-CI/CD: GitHub Actions
+Containerization: Docker
 
 Code Quality: SonarCloud
 
+CI/CD: GitHub Actions
+
+Deployment Platform: Render
+
+Version Control: Git & GitHub
+
+⚙️ Project Setup & Build Steps
+1️⃣ Clone the Repository
+git clone https://github.com/3BCAdevopss/devops-project-backend.git
+cd devops-project-backend
+
+2️⃣ Build the Project Using Maven
+mvn clean package
 
 
-##Configuration
+This generates the JAR file inside the target/ directory.
 
-Application Port
+🐳 Docker Image Build & Run
+3️⃣ Build Docker Image
+docker build -t devops-project-backend .
 
-Default backend port:
-
-8080
-
-##CORS Configuration
-
-CORS is enabled to allow requests from frontend deployed on Vercel.
-
-Example:
-
-@CrossOrigin(origins = "*")
-@RestController
-
-##Run Locally (Without Docker)
-
-Prerequisites
-
-Java 17+
-
-Maven
-
-##Steps
-
-mvn clean install
-
-mvn spring-boot:run
+4️⃣ Run Docker Container
+docker run -p 8080:8080 devops-project-backend
 
 
 Backend will be available at:
-http://localhost:8080
-
-##Run Using Docker
-
-Build Docker Image
-
-docker build -t devops-backend .
-
-Run Container
-
-docker run -d -p 8080:8080 devops-backend
-
-
-Access API:
 
 http://localhost:8080
 
-##Run with Docker Compose
+🔄 Git Workflow & Pull Request Process
 
-When running frontend and backend together:
+Created feature branches for backend changes
 
-docker compose up --build
+Implemented APIs and configuration updates
+
+Committed changes with proper commit messages
+
+Raised Pull Requests (PRs) to main
+
+GitHub Actions pipeline triggered automatically
+
+SonarCloud analysis executed on PR
+
+PR merged after successful checks
+
+🔍 SonarCloud Code Analysis
+
+SonarCloud integrated via GitHub Actions
+
+Analyzed:
+
+Code smells
+
+Bugs
+
+Vulnerabilities
+
+Maintainability
+
+Quality Gate initially failed due to:
+
+Missing coverage
+
+Configuration updated and issues reviewed
+
+sonar backend passed image:(Backend is named as profit margin analyzer)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/547588a1-ea43-4422-98d0-5592e38646c0" />
 
 
-Services:
+🚀 Deployment on Render
+Deployment Steps:
 
-Backend → http://localhost:8080
+Dockerized backend application
 
-Frontend → http://localhost:3000
+Connected GitHub repository to Render
 
-Frontend communicates with backend using Docker service name:
+Configured build and start commands
 
-http://backend:8080
+Render automatically builds and deploys Docker image
 
-##CI/CD Pipeline
+Public API exposed via Render service URL
 
-Implemented using GitHub Actions
+🌐 Live API Endpoint
+👉 https://devops-project-backend-h8hb.onrender.com/api/products
 
-Triggered on every push to main
+🔗 Frontend Integration
 
-Pipeline stages:
+Backend APIs consumed by React frontend
 
-Code checkout
+CORS configured to allow frontend access
 
-Build using Maven
+Data fetched using REST endpoints
 
-Docker image build
+End-to-end integration tested successfully
 
-Push image to Docker Hub
+⚠️ Challenges Faced & Solutions
+🔴 SonarCloud Quality Gate Issues
 
-SonarCloud analysis
+Initial failure due to 0% test coverage
+
+Solution:
+
+Reviewed issues
+
+Adjusted quality gate expectations
+
+Documented known limitations
+
+🔴 Docker Build Issues
+
+JAR file not found during image build
+
+Solution:
+
+Ensured Maven build runs before Docker build
+
+Corrected Dockerfile paths
+
+🔴 Render Deployment Challenges
+
+Application failed to start initially
+
+Port mismatch issues
+
+Solution:
+
+Ensured correct port exposure
+
+Verified Render service configuration
+
+Rebuilt and redeployed successfully
+
+📈 Key Learnings
+
+Building production-ready Spring Boot APIs
+
+Dockerizing backend applications
+
+Implementing CI/CD pipelines for backend
+
+Understanding cloud deployment using Render
+
+Debugging build, container, and deployment issues
